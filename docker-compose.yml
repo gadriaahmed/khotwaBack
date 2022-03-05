@@ -1,0 +1,16 @@
+version : '3'
+services:
+  khotwa_back_end:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - '8789:8789'
+    environment:
+      WAIT_HOSTS: khotwa_mongo:27017
+  khotwa_mongo:
+    image: 'mongo:latest'
+    hostname: mongo
+    ports:
+      - '27017:27017'
